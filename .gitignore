@@ -68,4 +68,5 @@ admin/npm-debug.log*
 admin/yarn-debug.log*
 admin/yarn-error.log*
 
+# do not remove, we dont want to commit docs, keep it local only
 docs
