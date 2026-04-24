@@ -7,7 +7,7 @@ This ticket defines **v1** canonical schemas for:
 
 - agenda
 - transcript (turn-based)
-- realtime textbox events (append-only for MVP)
+- realtime WebSocket events (append-only for MVP)
 
 It also defines what the MVP accepts and provides a fixture you can use in tests.
 
@@ -64,6 +64,9 @@ Optional:
     - `timestamp`
     - `text_delta` (append-only for MVP) or `text` (full snapshot)
     - optional `author` (display name)
+- Define server→client realtime events needed by downstream UX:
+  - `DriftAlert` (prompt connected users when drift is detected)
+  - `DriftFeedbackApplied` (broadcast convergence when any client responds)
 - Decide what MVP accepts:
   - **Realtime textbox stream** (primary): clients send messages over WebSocket; backend builds a canonical transcript
   - Plain text transcript (paste/upload) as fallback
@@ -122,6 +125,7 @@ Constraint (application-level): at least one of `meeting_id` or `meeting_name` S
 
 Primary MVP mode is **append-only** (clients send deltas):
 
+- `type` (string, required): must be `"realtime_message"`.
 - `client_id` (string, required): unique per browser/device instance.
 - `timestamp` (string RFC3339, required): event time.
 - `text_delta` (string, required for MVP): append-only text.
@@ -138,10 +142,64 @@ Rules:
 
 ```json
 {
+  "type": "realtime_message",
   "client_id": "c-8d7b1d",
   "timestamp": "2026-04-24T09:30:05Z",
   "author": "Sam",
   "text_delta": "Hi all — starting now.\n"
+}
+```
+
+### `DriftAlert` (WebSocket event)
+
+Server emits this event to **prompt connected users** when drift is detected on newly-submitted text.
+
+- `type` (string, required): must be `"drift_alert"`.
+- `timestamp` (string RFC3339, required)
+- `meeting_id` (string, optional but recommended): same semantic as `Transcript.meeting_id`.
+- `segment_id` (string, required)
+- `agenda_item_id` (string, required): agenda item the segment is being judged against (typically `best_agenda_item_id`).
+- `model_label` (string, required): `"on_track" | "maybe_drift" | "drift"`.
+- `confidence` (number 0–1, required)
+
+Optional but useful for UX/debugging:
+
+- `rationale` (string)
+- `segment_text_excerpt` (string)
+
+```json
+{
+  "type": "drift_alert",
+  "timestamp": "2026-04-24T09:34:12Z",
+  "meeting_id": "m-2026-04-24",
+  "segment_id": "seg-12-17",
+  "agenda_item_id": "a-2",
+  "model_label": "drift",
+  "confidence": 0.86,
+  "segment_text_excerpt": "...anyway, about the pricing model...",
+  "rationale": "This discussion is about pricing; agenda item a-2 is release planning."
+}
+```
+
+### `DriftFeedbackApplied` (WebSocket event)
+
+When any client submits feedback (T-006), the server broadcasts an applied override so **all clients converge**.
+
+- `type` (string, required): must be `"drift_feedback_applied"`.
+- `timestamp` (string RFC3339, required)
+- `meeting_id` (string, optional but recommended)
+- `agenda_item_id` (string, required)
+- `segment_id` (string, required)
+- `label` (string, required): `"drift" | "not_drift"`
+
+```json
+{
+  "type": "drift_feedback_applied",
+  "timestamp": "2026-04-24T09:34:25Z",
+  "meeting_id": "m-2026-04-24",
+  "agenda_item_id": "a-2",
+  "segment_id": "seg-12-17",
+  "label": "not_drift"
 }
 ```
 

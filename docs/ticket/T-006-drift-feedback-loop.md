@@ -1,7 +1,9 @@
-# T-006 — Drift feedback loop (“Not drift” correction)
+# T-006 — Drift feedback loop (real-time prompt + “Not drift” correction)
 
 ## Goal
 Allow human-in-the-loop correction to reduce false positives and refine boundaries.
+
+In the MVP, this loop is **real time**: as users submit new transcript text to the backend, drift scoring runs and, when drift is detected, the backend prompts **all connected clients** to confirm/override.
 
 This ticket is the **mechanism** for capturing human labels and applying them as overrides on top of T-005 drift scoring outputs.
 
@@ -14,25 +16,46 @@ From T-005, each segment will have a model output roughly shaped like:
 
 T-006 adds a human override layer that:
 
-1) updates the UI immediately
+1) updates the UI immediately (local + all connected clients)
 2) persists to disk
 3) is reloadable and re-applies deterministically
 4) can optionally feed back into future scoring (few-shot / thresholds)
 
+This ticket also defines the **prompting loop** for realtime drift:
+
+- When the backend detects `maybe_drift`/`drift` on newly-submitted text, it emits a `drift_alert` event to connected clients.
+- A connected user confirms/overrides via a feedback action.
+- The backend persists that feedback and broadcasts the applied override so all clients stay consistent.
+
 ## MVP user flow
-- User views segments with their model drift label.
-- For any segment, user can:
+
+### A) Realtime prompting flow (primary)
+
+- Users type into the shared transcript textbox and **submit/append** text to the backend.
+- Backend (async) updates segmentation + drift scoring for the affected segment(s).
+- If drift is detected (label is `maybe_drift` or `drift`, and meets thresholds), backend sends a **prompt** to all connected clients.
+- Any connected user can respond:
   - **Confirm drift** (human says: this is drift)
   - **Mark not drift** (human says: this is not drift)
   - (Optional) **Reset** to remove human override
-- UI updates immediately to reflect the override.
+- UI updates immediately and the applied override is reflected across all clients.
 - Feedback entry is appended to a local JSON log.
 - On reload, the log is re-applied so overrides persist.
+
+### B) Manual review flow (fallback)
+
+- User views segments with their model drift label.
+- For any segment, user can confirm/override/reset.
+- UI updates immediately; feedback is persisted and reloadable.
 
 ## Requirements / tasks
 - UI affordance per segment:
   - mark as `not_drift` (override)
   - mark as `drift` (confirm)
+- Realtime prompting:
+  - backend emits a `drift_alert` event to connected clients when drift is detected on newly submitted text
+  - UI shows a lightweight prompt (toast/banner/modal) with one-click actions: `Drift` / `Not drift`
+  - when any client submits feedback, the backend broadcasts `drift_feedback_applied` so all clients converge
 - Persist feedback locally:
   - store as JSON with (agenda, segment, label, timestamp)
 - Apply feedback in scoring:
@@ -148,6 +171,7 @@ Keep $k$ small (e.g. 5–20) to control prompt size.
 
 ## Acceptance criteria
 - User can override drift label and see immediate UI update.
+- When drift is detected during realtime input, all connected clients receive a prompt and converge after any one user responds.
 - Feedback is saved to disk and reloadable.
 
 ## Verify (when implemented)
@@ -155,6 +179,10 @@ Keep $k$ small (e.g. 5–20) to control prompt size.
 - Apply `drift` and `not_drift` overrides on two segments.
 - Refresh the page (or restart the service). Overrides should re-appear.
 - Confirm the on-screen “final label” changes immediately while the “model label” remains visible (if UI supports it).
+- Open two browser windows connected to the same meeting.
+  - Append new transcript text that triggers drift.
+  - Verify both windows receive the drift prompt.
+  - Submit `not_drift` from one window and verify the other window updates.
 
 ## Dependencies
 - T-005

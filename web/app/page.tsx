@@ -1,4 +1,6 @@
 import MessageDemo from '@/components/MessageDemo';
+import MeetingMvp from '@/components/MeetingMvp';
+import NotionDraftDemo from '@/components/NotionDraftDemo';
 
 export default function HomePage() {
   return (
@@ -13,7 +15,11 @@ export default function HomePage() {
         </small>
       </header>
 
+      <MeetingMvp />
+
       <MessageDemo />
+
+      <NotionDraftDemo />
 
       <section className="card">
         <h2 style={{ marginTop: 0 }}>Next steps (T-011)</h2>

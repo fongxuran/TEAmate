@@ -12,6 +12,7 @@ Make it easy to install and run TEAmate MVP locally.
   - run tests
 - Add troubleshooting section:
   - WebSocket connection issues (CORS/origin, proxy)
+  - drift prompts not appearing (WebSocket connected, thresholds too strict, LLM mode latency)
   - missing `ANTHROPIC_API_KEY` (fallback mode expectations)
   - missing `MOTION_API_KEY` (local export still works)
 

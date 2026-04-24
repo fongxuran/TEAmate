@@ -1,0 +1,71 @@
+{
+  "schema_version": "v1",
+  "generated_at": "2026-04-24T10:00:00Z",
+  "meeting_id": "m-2026-04-24-001",
+  "meeting_name": "Weekly product sync",
+  "prompt_version": "summary_prompt.v1",
+  "mode": "fallback",
+  "agenda_hash": "sha256:<example>",
+  "segments_hash": "sha256:<example>",
+  "sections": [
+    {
+      "id": "purpose",
+      "title": "Purpose / agenda recap",
+      "markdown": "Goal today: status, MVP decisions, then actions. Agenda covered: Project status → MVP scope decisions → Next steps.",
+      "source_segment_ids": ["seg-0-1"]
+    },
+    {
+      "id": "key-points",
+      "title": "Key discussion points",
+      "markdown": "- Backend: messages API is in place; next is transcript schema to make segmentation deterministic.\n- Frontend: local proxy route works; avoid relying on npx for bootstrapping.\n- MVP scope: realtime textbox stream is primary; pasted transcript is fallback; JSON upload is a stretch but helps repeatability.",
+      "source_segment_ids": ["seg-0-1", "seg-2-3", "seg-5-5"]
+    },
+    {
+      "id": "decisions",
+      "title": "Decisions",
+      "markdown": "- Adopt v1 schema with a schema_version field and RFC3339 timestamps.",
+      "source_segment_ids": ["seg-6-7"]
+    },
+    {
+      "id": "action-items",
+      "title": "Action items",
+      "markdown": "- Alex: draft segmentation rules.\n- Priya: wire UI input to the schema.",
+      "source_segment_ids": ["seg-6-7"]
+    },
+    {
+      "id": "open-questions-risks",
+      "title": "Open questions / risks",
+      "markdown": "- Blockers: none called out.",
+      "source_segment_ids": ["seg-2-3", "seg-4-4"]
+    }
+  ],
+  "agenda_item_summaries": [
+    {
+      "agenda_item_id": "a-1",
+      "title": "Project status",
+      "bullets": [
+        "Backend messages API is in place; transcript schema is next to make segmentation deterministic.",
+        "No blockers were reported."
+      ],
+      "source_segment_ids": ["seg-0-1", "seg-4-4"]
+    },
+    {
+      "agenda_item_id": "a-2",
+      "title": "MVP scope decisions",
+      "bullets": [
+        "Realtime textbox stream is primary; pasted transcript is fallback; JSON upload is a stretch but helps repeatability.",
+        "Decision: adopt v1 schema with schema_version and RFC3339 timestamps."
+      ],
+      "source_segment_ids": ["seg-5-5", "seg-6-7"]
+    },
+    {
+      "agenda_item_id": "a-3",
+      "title": "Next steps",
+      "bullets": [
+        "Action items assigned to Alex (segmentation rules) and Priya (UI input wiring)."
+      ],
+      "source_segment_ids": ["seg-6-7"]
+    }
+  ],
+  "source_segment_ids": ["seg-0-1", "seg-2-3", "seg-4-4", "seg-5-5", "seg-6-7"]
+}

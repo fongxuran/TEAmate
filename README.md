@@ -49,7 +49,10 @@ The UI proxies requests via a Next.js route handler at `/api/messages`, which fo
 
 The `web/` Next.js scaffold is checked into the repo, so you **do not** need to run `npx create-next-app`.
 
-If `make web-install` fails due to a custom/private npm registry configuration, update your npm registry settings to a registry that contains the required packages (e.g. the public npm registry) and retry the install.
+If `make web-install` fails due to npm registry issues, check the registry configuration.
+
+- This repo pins the frontend registry via `web/.npmrc`.
+- In SPD environments, the intended setting is the Nexus proxy: `https://nexus.in.spdigital.sg/repository/npm-all` (mirrors the reference setup in `../dreadnought/.npmrc`).
 
 ## Dev commands
 

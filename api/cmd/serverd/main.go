@@ -11,7 +11,11 @@ import (
 
 	_ "github.com/lib/pq"
 
+	notionconnector "teammate/internal/connector/notion"
+	notionhandler "teammate/internal/handler/rest/integrations/notion"
 	messageshandler "teammate/internal/handler/rest/messages"
+	mvphandler "teammate/internal/handler/rest/mvp"
+	"teammate/internal/realtime"
 	messagesrepo "teammate/internal/repository/messages"
 )
 
@@ -40,12 +44,18 @@ func main() {
 	}
 
 	repo := messagesrepo.NewRepository(db)
-	handler := messageshandler.New(repo)
+	msgHandler := messageshandler.New(repo)
+	hub := realtime.NewHub()
+	mvp := mvphandler.New(hub)
+
+	// Optional Notion integration (T-010): defaults to dry-run unless NOTION_DRY_RUN=false.
+	notionClient := notionconnector.NewClient(notionconnector.LoadConfigFromEnv())
+	notionREST := notionhandler.New(notionClient)
 
 	authUsers := loadAuthUsers()
 	corsAllowedOrigins := getEnvCSV("CORS_ALLOWED_ORIGINS", []string{"http://localhost:3000", "http://127.0.0.1:3000"})
 
-	router := newRouter(handler, authUsers, corsAllowedOrigins)
+	router := newRouter(authUsers, corsAllowedOrigins, hub, msgHandler, mvp, notionREST)
 
 	srv := &http.Server{
 		Addr:              ":" + port,

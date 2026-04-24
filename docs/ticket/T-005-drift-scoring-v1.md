@@ -3,6 +3,8 @@
 ## Goal
 Compute a drift score per segment relative to the agenda.
 
+In realtime mode (shared textbox), scoring should run incrementally as new text is submitted to the backend, and may emit `drift_alert` events to connected clients when a segment crosses drift thresholds (see T-003 for event shape, T-006 for the feedback loop).
+
 ## Requirements / tasks
 - Primary (current approach): LLM-based drift classification
   - Prompt an LLM with:

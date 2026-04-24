@@ -14,6 +14,10 @@ UI screens/sections:
    - config toggles (LLM provider, thresholds)
 2) **Drift view**
    - list segments with drift label + best agenda item
+   - realtime drift prompts
+     - when backend emits a `drift_alert`, show a prompt (toast/banner/modal)
+     - action buttons: `Drift` / `Not drift` (T-006)
+     - when any client responds, update all connected clients (via `drift_feedback_applied`)
    - quick filters: show only drift
    - actions: mark “Not drift” / “Drift” (T-006)
 3) **Outcomes**
@@ -21,11 +25,15 @@ UI screens/sections:
    - decisions + action items (T-008)
 4) **Exports**
    - download local ticket drafts (T-009)
-   - optional Motion create button if enabled (T-010)
+   - optional Notion create button if enabled (T-010)
 
 ## Acceptance criteria
 - A user can run the UI locally and complete an analysis flow end-to-end.
 - Demo works using `docs/transcript/meeting 1.txt` or a fixture.
+- With two clients connected, drift alerts and feedback actions propagate in real time.
 
 ## Dependencies
 - T-002, T-003, T-005, T-008, T-009
+
+## Handoff
+- See `docs/ticket/T-011-handoff.md`
