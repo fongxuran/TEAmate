@@ -1,0 +1,91 @@
+@Cheng Soo Fong (22 Apr - HW Volunteer) [0:52]: So drift to the, the, the, the artist I just I feel it's a bit overengineering, we shouldn't care about that for NDP. We just say that we heal on the demo with.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [1:13]: To 11 be a day you want, I think we need to care because then it will help us formulate a better product, because if let's say if, if they say drift detector, then you have done from this is not a drift. So if you click that this is not a drift, you actually expand the scope a bit of that.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [1:31]: You get what I mean, right, like it's like, like. It, it, it's the, the trying to find its boundaries as well. I think for drip detection we just rely on AI, yeah, yeah, yeah, so they, the initial one, so if let's say if you say adjacent, if really shouldn't deter so we shouldn't determine that now, now we shouldn't deter it's not determinis the user will say like this is not a, this is not a case then but after the AI should work is that it should determine by itself, you know, you are not, yeah, so, so we should tell the age we look in the
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [2:04]: Then. Dream detected users say it's not, so you, you say it's not then it's actually it's the co-pilot steering, so you steering to include more, more, more, more adjustment on those topics. Then we will update contact, that's all, yeah, correct, we, we don't need to care about how the deter yes we don't need the, yeah, yes, OK, you don't have about how they determine the dreams when they can.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [2:31]: OK, so Dream detection, then summary. Era immigration, we don't have but that's future. We can, we can use our own giraffe and You know if he can
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [2:48]: You cannot use the products on You're not using Are you using Your own computer Or, no, OK, yeah, I don't know if anything go wrong. I'll be bringing my I will bring mine and
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [3:06]: I got this, they give me ISS, ISS. Then What we can do is, also we can have, maybe discos like Telegram also can integration. If let's say if you want, if you want to create tickets, you can create in your local file.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [3:26]: You can, you can tell it that it can create Just because it's just COI now, CRI do the or you use a MCP server to create tickets. And the others also lah, not only Giralla there's like, motion that is Monday, I mean, there's so many on I live here just he he rides only one.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [3:46]: You really only by then Right now, yeah, we will So OK But my device is not very strong, but it will do its job, you will just use a random. Jira adjacent Purda, yeah, the one that's easy to integrate for now so it's easy that you create and just
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [4:04]: Fool around So I think after the meeting, right You'll, you'll generate but now the generic part is You really want Him to approve but you Jareta by Mr.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [4:23]: Or you want it autore autore lah, bro, show the power again, OK, so you also create for the MEP power, yeah. Then he can go to ticket to. So I think we, in order for this drift detection to really work enforcement.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [4:44]: So if we detect grief and keep detecting dream. What would happen is that, there must be some enforcement policy. If you get what I mean, right Yeah, usually lah, the policing that time you, as a police you must please stay quietly as well.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [5:01]: So what will be the penalty? How should we go, how should we enforce good behavior? Because I think one of the selling points in this is that if let's say you invite somebody on upper management.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [5:18]: To sit in the meeting and you want to get Something out of that advice, that's two future future we, we can put in a big plans, but that's not something we will do right. I think it's an easy way to I don't understand your feature the feature is
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [5:34]: If let's say now drip detected, which detected, please stay on the agenda. Then he keeps saying this is better, please stay on the better. If it doesn't, please tell the better, and you've been doing it for the past 5 decades. Every time you talk, every message is actually stopping then
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [5:52]: Then there should be some kind of enforcement policy, so as a, as a DSM or maybe as a, as a person going in a meeting, if let's say the other person, how about the phoning organizer can say in this market. Detected. No, no, no, if the drink is detected, but the person keep insisting on drifting.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [6:11]: So, so if there's a person or ran then I happy with the PFro already. The more just save it, so we should help them also. So if let's say if now we are overruling the PM team should be The, the driver. The AI is ultimately just a helper. We shouldn't know, it's, I feel it should take a more proactive role.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [6:33]: Then you be serious OK. You You What do you Feel Our features, it's quite, quite huge. But I for, I think this one we should look for because I think my people are the problem right where you can say you have another person in the meeting.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [6:54]: That you have absolutely no control. You cannot see the person, but you need the AI to say it. So you understand, right, the iFA told the ANA did detected, then you maybe comment something lah. Then. The you
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [7:11]: The p.m. will probably not treat that. Not, not the Then Then we continue on and then the guy keeps saying that oh the the AMPP, yeah, that's what I'm thinking that they will stop the person from talking.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [7:27]: OK, so punish out is a feature out for for 30 seconds. I think that's, that's the thing of it, but It has to follow like a PM do not say it's not, so it's it's over then we should.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [7:44]: I set a PF yeah because if the PMC is not, it really includes so it's actually not drifting, you won't prompt the thing of the day, but if you keep on thinking that the guy keep talking then you buy last you, you put him in naughty corner for like 15 seconds, you really would, you put like get angry or no one, they say, hey, hey, you can't talk that's quite, I'm not so tired. Yeah, that's, he's holding us up with then he's not.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [8:09]: Then, then you have the last 100, And then so in order to learn we will make this participant for example seconds. OK, so Yeah. Then we, then that's, then that is actually steering the conversation back into agenda, that, that's OK, yeah.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [8:27]: So it's an easy, that's why I say it's an easy win, so. Previously my thought was meet everybody at SA. But maybe go to a text message, so we don't need to do that. Yeah. You just, just talk, then after that, then everybody, then, then the 15 seconds is for the whole thing to realign back to the agenda, yeah.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [8:50]: Yeah. So, OK, now the next step. So we want to create all this you, this one definitely touch it because you are that lot of people that nobody touch. We have a begging for messages and
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [9:08]: And payload the voices. They will be a socket. No, I don't know how to do maybe called to be canceled. I called. Leader of the IO OK So back in what, go up, go move move gola more more than not correct.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [9:28]: And go back socket. So when you open the front end, let's say it's a In can We can hold the URL or actually we can just send it, you know, the front end file to everybody, then they just open, then you we code to the server. No you
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [9:47]: If you want there's like free like you will go all this like there's those free, those lightweight free and. But I mean if you never use EC, you don't, you'll use Amazon. No, means you will have the free deal. You sign up the free deal and can be gone. I use Google about that. I mean there are, there are, they are outside there is no sun you can watch for free and local.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [10:11]: Then You need to make sure you're able to A lot of both local, right, you're exposed to public. Then you, the front end, you just hit like that as well. The, the one I know, OK lor, then we can do that, we also can need the front.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [10:29]: But it's a rest in not we socket. But OK lah And what Is the song HTTP2 can I. We, we try We, it cannot then we just, we just use all of the services are just free, free, premium service cause I knew you're not you you need to run the res more like 12 hours when I previously used a payment called Ero, so you like you host it and then you say your po
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [10:57]: Is 3000, then you go to Do you have total 3000, then you give you a public address, so the public address Maybe your front end can go to the public, and the public you go to Kangcro and then link to your local. That's how it works
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [11:14]: OK. And they also can have a Silver psychia the, the front end is served by the so we're going to hold it somewhere. Fun and stuff OK
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [11:30]: So we then anything else Nothing else, we still have, 48 minutes, you can start going. No, no, no, I, OK, I don't know lah, the, the email say all Malia was sack. So we are actually, we are already doing work, we ironed out a lot of things.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [11:50]: But they don't need to know that because there's no coke. I see I see, oh, I see, I say, we will create a reporter so tomorrow we must, we must, We must retranscribe properly. Then we put the transcription in to create the features that you will provide.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [12:10]: Agentlow is the agent Hm. They never say you cannot pay your own agent from my ex. No, you can get the You Oh, for this heckle
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [12:27]: To the person The Agents of what's the name The one that Angling I worked previously, but I didn't use it I thought they said they will pair us with some telegram home.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [12:45]: You you're supposed to click it Yeah, that's that I couldn't click it on this device. And, and when you join, I think Everybody will just say that where they're from, yeah, from IB. 3.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [13:06]: I couldn't access for this type of the different. And I don't think we'll explain about anything. Can I think when we hire not quite a lot of things. To to phone. Will bring out the agent.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [13:23]: Put a bit of, Foundation in the park. A bit of blusher and you or eyelashes a bit knocker and you found it and put it by side show the world what you are. I think most importantly, we just need to align on the problem.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [13:45]: Do that air product they are trying to sell what's, what's the future that we are covering in the MDP. But will you use this product I say you create this product, you most idea right, if you use gente, we will come out with the product and I would I. But this I always it takes days. It's, it's set.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [14:04]: It's not so much still iterate on, but if, if it's, if Suong will use such a product, there is both creating because at least there's some some for using is we create something you know within myself to create a gun line. I call that bola you take a big bit.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [14:23]: Whatever But it doesn't completely Yeah, yeah You still eventually when you hit it like 20, 134, yeah. Eventually a big plan, yeah, but then also very hard because you're dealing in people.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [14:40]: You can hold you, how does the product cover all the dishes, then got some, some CBK then you also cannot do anything. Yeah, some people will try to, try to inject the, the, they, they know there's a drifter, then they will try to game the system, right, then they say, oh then they talk, talk, talk something else like I said, yeah, and the AI is good the day is, is it good or bad? I can't tell it's not all previous you you get yeah for somebody if let's say you know the product is right, then they were like, whole thing was some way to circumvent the lot of the country
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [15:16]: Normal AI issue, so. I think Co-pilot all, they got their own guard rails, yeah, so eventually he also must his own guy, maybe that's one of the things they say what the guards you put in place, your gum rails is not part of MDP. Is it obvious, but he might get asked because he's relenting.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [15:34]: As a real cover the future, if anything they ask, you cannot, so you just book to share. Then you can answer that you look. We, we do this, OK, we do this. No, I don't think the answer is correct question. They will, they have to ask, the judges have to act like they're judging lah.
+
+@Cheng Soo Fong (22 Apr - HW Volunteer) [16:07]: Right It's productive Or is a show tech. What time is it My, but 8 o'clock.
