@@ -18,5 +18,14 @@ Convert transcript turns into analysis chunks suitable for drift scoring and ext
 - Given a transcript fixture, segmentation output is deterministic.
 - Each segment has a stable ID and contains non-empty text.
 
+## Implementation (repo)
+- Segmentation + `Segment` type: `api/internal/model/transcript_segmentation.go`
+  - Entry point: `model.SegmentTranscript(transcript, opts)`
+  - Renderer: `model.RenderSegmentsPlaintext(segs)`
+- Deterministic fixture-based test: `api/internal/model/transcript_segmentation_test.go`
+
+## Verify
+- Run: `make api-test`
+
 ## Dependencies
 - T-003

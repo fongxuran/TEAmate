@@ -89,7 +89,7 @@ func (h Handler) uploadMessageWS(w http.ResponseWriter, r *http.Request) {
 
 	metaBytes, err := readLimited(reader, maxMetaSize)
 	if err != nil {
-		writeWSError(ctx, conn, websocket.StatusMessageTooLarge, err.Error())
+		writeWSError(ctx, conn, websocket.StatusMessageTooBig, err.Error())
 		return
 	}
 
@@ -106,7 +106,7 @@ func (h Handler) uploadMessageWS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if meta.SizeBytes > maxBinarySize {
-		writeWSError(ctx, conn, websocket.StatusMessageTooLarge, "binary payload exceeds 15mb limit")
+		writeWSError(ctx, conn, websocket.StatusMessageTooBig, "binary payload exceeds 15mb limit")
 		return
 	}
 
@@ -124,7 +124,7 @@ func (h Handler) uploadMessageWS(w http.ResponseWriter, r *http.Request) {
 
 		binary, err = readLimited(reader, maxBinarySize)
 		if err != nil {
-			writeWSError(ctx, conn, websocket.StatusMessageTooLarge, err.Error())
+			writeWSError(ctx, conn, websocket.StatusMessageTooBig, err.Error())
 			return
 		}
 		if int64(len(binary)) != meta.SizeBytes {
