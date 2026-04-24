@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	_ "github.com/lib/pq"
@@ -41,11 +42,10 @@ func main() {
 	repo := messagesrepo.NewRepository(db)
 	handler := messageshandler.New(repo)
 
-	authUsers := map[string]string{
-		"admin": "password",
-	}
+	authUsers := loadAuthUsers()
+	corsAllowedOrigins := getEnvCSV("CORS_ALLOWED_ORIGINS", []string{"http://localhost:3000", "http://127.0.0.1:3000"})
 
-	router := newRouter(handler, authUsers)
+	router := newRouter(handler, authUsers, corsAllowedOrigins)
 
 	srv := &http.Server{
 		Addr:              ":" + port,
@@ -56,6 +56,54 @@ func main() {
 	log.Printf("server listening on :%s", port)
 	if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		log.Fatalf("server error: %v", err)
+	}
+}
+
+func loadAuthUsers() map[string]string {
+	if getEnvBool("API_AUTH_DISABLED", false) {
+		return nil
+	}
+
+	user := getEnv("API_BASIC_AUTH_USER", "admin")
+	pass := getEnv("API_BASIC_AUTH_PASS", "password")
+	if strings.TrimSpace(user) == "" {
+		return nil
+	}
+	return map[string]string{user: pass}
+}
+
+func getEnvCSV(key string, fallback []string) []string {
+	value := strings.TrimSpace(os.Getenv(key))
+	if value == "" {
+		return fallback
+	}
+	parts := strings.Split(value, ",")
+	res := make([]string, 0, len(parts))
+	for _, p := range parts {
+		p = strings.TrimSpace(p)
+		if p == "" {
+			continue
+		}
+		res = append(res, p)
+	}
+	if len(res) == 0 {
+		return fallback
+	}
+	return res
+}
+
+func getEnvBool(key string, fallback bool) bool {
+	value := strings.TrimSpace(strings.ToLower(os.Getenv(key)))
+	if value == "" {
+		return fallback
+	}
+	switch value {
+	case "1", "true", "yes", "y", "on":
+		return true
+	case "0", "false", "no", "n", "off":
+		return false
+	default:
+		return fallback
 	}
 }
 

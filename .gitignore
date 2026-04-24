@@ -18,6 +18,8 @@ api/**/mock_*.go
 
 # Web
 web/node_modules
+web/.next
+web/out
 admin/node_modules
 /node_modules/
 
@@ -51,6 +53,7 @@ web/build-prod
 # misc
 web/.DS_Store
 web/.env
+web/.env.local
 admin/.DS_Store
 admin/.env
 

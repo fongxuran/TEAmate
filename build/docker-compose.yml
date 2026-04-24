@@ -17,6 +17,11 @@ services:
     environment:
       PORT: "8080"
       DATABASE_URL: postgresql://teammate:teammate@db:5432/teammate?sslmode=disable
+      # Local dev defaults
+      API_BASIC_AUTH_USER: admin
+      API_BASIC_AUTH_PASS: password
+      API_AUTH_DISABLED: "false"
+      CORS_ALLOWED_ORIGINS: "http://localhost:3000"
     ports:
       - "8080:8080"
     depends_on:
