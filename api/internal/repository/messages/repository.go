@@ -9,8 +9,8 @@ import (
 
 // Repository provides access to message storage.
 type Repository interface {
-	Create(ctx context.Context, body string) (model.Message, error)
-	List(ctx context.Context, limit, offset int) ([]model.Message, error)
+	Create(ctx context.Context, body string, binary []byte, fileName, contentType string, sizeBytes int64) (model.Message, error)
+	List(ctx context.Context, limit, offset int, includeBinary bool) ([]model.Message, error)
 }
 
 // NewRepository returns a postgres-backed repository.
