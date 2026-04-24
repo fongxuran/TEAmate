@@ -6,6 +6,9 @@
 
 .netrc
 
+# Secrets / local env
+.env
+
 # Go specific:-
 *.out
 gqlgenerated.go
