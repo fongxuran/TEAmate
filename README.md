@@ -45,6 +45,12 @@ From `web/`, install deps and run the dev server:
 
 The UI proxies requests via a Next.js route handler at `/api/messages`, which forwards to the Go API.
 
+#### Note on `npx` / scaffolding
+
+The `web/` Next.js scaffold is checked into the repo, so you **do not** need to run `npx create-next-app`.
+
+If `make web-install` fails due to a custom/private npm registry configuration, update your npm registry settings to a registry that contains the required packages (e.g. the public npm registry) and retry the install.
+
 ## Dev commands
 
 A Makefile is provided at the repo root:
