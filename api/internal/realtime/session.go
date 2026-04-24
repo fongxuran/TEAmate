@@ -32,12 +32,12 @@ type Session struct {
 
 func newSession(id string) *Session {
 	return &Session{
-		id:               id,
-		config:           analysis.Config{},
+		id:                id,
+		config:            analysis.Config{},
 		feedbackOverrides: make(map[string]bool),
-		lastSegmentIDs:   make(map[string]struct{}),
+		lastSegmentIDs:    make(map[string]struct{}),
 		alertedSegmentIDs: make(map[string]struct{}),
-		conns:            make(map[*websocket.Conn]struct{}),
+		conns:             make(map[*websocket.Conn]struct{}),
 	}
 }
 
@@ -125,10 +125,10 @@ func (s *Session) Recompute() analysis.Result {
 }
 
 type driftAlert struct {
-	SegmentID      string   `json:"segment_id"`
+	SegmentID       string  `json:"segment_id"`
 	BestAgendaTitle *string `json:"best_agenda_title,omitempty"`
-	BestScore      float64  `json:"best_score"`
-	TextPreview    string   `json:"text_preview"`
+	BestScore       float64 `json:"best_score"`
+	TextPreview     string  `json:"text_preview"`
 }
 
 // recompute updates analysis.Result. If emitAlerts is true, returns drift alerts for newly drift segments.
@@ -201,7 +201,7 @@ func (s *Session) snapshotPayload() map[string]any {
 		"agenda":          append([]model.AgendaItem(nil), s.agendaItems...),
 		"transcript_text": s.transcriptText,
 		"config":          s.config,
-		"analysis":         s.result,
+		"analysis":        s.result,
 	}
 }
 
@@ -226,7 +226,7 @@ func (s *Session) MarshalSnapshot() ([]byte, error) {
 		"agenda":          agenda,
 		"transcript_text": transcriptText,
 		"config":          cfg,
-		"analysis":         res,
+		"analysis":        res,
 	}
 	return json.Marshal(payload)
 }

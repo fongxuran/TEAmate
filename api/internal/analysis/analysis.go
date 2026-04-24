@@ -48,14 +48,14 @@ type DriftSegment struct {
 
 // Result is the end-to-end analysis output consumed by the local UI.
 type Result struct {
-	SchemaVersion string         `json:"schema_version"`
-	GeneratedAt   time.Time      `json:"generated_at"`
-	Agenda        []model.AgendaItem `json:"agenda"`
-	Transcript    model.Transcript   `json:"transcript"`
-	Segments      []DriftSegment `json:"segments"`
-	Summary       string         `json:"summary"`
-	Decisions     []string       `json:"decisions"`
-	ActionItems   []model.ActionItem `json:"action_items"`
+	SchemaVersion string              `json:"schema_version"`
+	GeneratedAt   time.Time           `json:"generated_at"`
+	Agenda        []model.AgendaItem  `json:"agenda"`
+	Transcript    model.Transcript    `json:"transcript"`
+	Segments      []DriftSegment      `json:"segments"`
+	Summary       string              `json:"summary"`
+	Decisions     []string            `json:"decisions"`
+	ActionItems   []model.ActionItem  `json:"action_items"`
 	TicketDrafts  []model.TicketDraft `json:"ticket_drafts"`
 }
 
@@ -112,9 +112,9 @@ func Analyze(meeting model.MeetingInput, cfg Config, feedbackOverrides map[strin
 	cfg = cfg.withDefaults()
 
 	segs := model.SegmentTranscript(meeting.Transcript, model.SegmentOptions{
-		MaxTokens:                 cfg.SegmentMaxTokens,
-		MaxChars:                  cfg.SegmentMaxChars,
-		IncludeSpeakerLabels:      true,
+		MaxTokens:                  cfg.SegmentMaxTokens,
+		MaxChars:                   cfg.SegmentMaxChars,
+		IncludeSpeakerLabels:       true,
 		ComputeSpeakerDistribution: false,
 	})
 

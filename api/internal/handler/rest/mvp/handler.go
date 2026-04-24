@@ -66,11 +66,11 @@ func (h Handler) postAnalyze(w http.ResponseWriter, r *http.Request) {
 }
 
 type ticketDraftExportResponse struct {
-	SchemaVersion string                 `json:"schema_version"`
-	GeneratedAt   string                 `json:"generated_at"`
-	Drafts        any                    `json:"drafts"`
-	Markdown      string                 `json:"markdown"`
-	CSV           string                 `json:"csv"`
+	SchemaVersion string `json:"schema_version"`
+	GeneratedAt   string `json:"generated_at"`
+	Drafts        any    `json:"drafts"`
+	Markdown      string `json:"markdown"`
+	CSV           string `json:"csv"`
 }
 
 func (h Handler) postTicketDraftExport(w http.ResponseWriter, r *http.Request) {

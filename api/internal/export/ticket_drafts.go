@@ -23,10 +23,10 @@ type TicketDraftFormats struct {
 // TicketDraftExport is the JSON on-disk wrapper format for exported ticket drafts.
 // This is meant to be stable and human-inspectable.
 type TicketDraftExport struct {
-	SchemaVersion string             `json:"schema_version"`
-	GeneratedAt   time.Time          `json:"generated_at"`
-	MeetingID     *string            `json:"meeting_id,omitempty"`
-	MeetingName   *string            `json:"meeting_name,omitempty"`
+	SchemaVersion string              `json:"schema_version"`
+	GeneratedAt   time.Time           `json:"generated_at"`
+	MeetingID     *string             `json:"meeting_id,omitempty"`
+	MeetingName   *string             `json:"meeting_name,omitempty"`
 	Drafts        []model.TicketDraft `json:"drafts"`
 }
 
