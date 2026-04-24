@@ -43,7 +43,7 @@ Secondary users:
 - Extracts action items and assigns owners (where possible).
 
 ### 3) From action item → ticket (workflow integration)
-- Converts action items into tickets (e.g., Jira; other tools later).
+- Converts action items into tickets/tasks (first target: **Motion**; other tools later).
 - Supports a review/approval step (create-as-draft → confirm → submit) or an auto-create mode depending on team preference.
 - Can also export to a local file when integrations aren’t available.
 
@@ -72,7 +72,10 @@ A longer-term direction discussed in the transcripts is coaching:
 Based on the transcripts, the MVP should prove feasibility for:
 1) **Drift detection on text** (agenda ↔ current topic ↔ drift) with simple nudges.
 2) **Summary + action item extraction** from a transcript.
-3) **Ticket creation** via a single easy integration (e.g., Jira) or local export.
+3) **Ticket creation** via a single easy integration (**Motion**) or local export.
+
+MVP UX note:
+- The MVP input is a **shared textbox** where multiple devices can join and type simultaneously (frontend ↔ backend over WebSockets).
 
 MVP implementation note:
 - Real-time voice processing is challenging due to segmentation/latency. A pragmatic MVP can operate on **text inputs** (pre-transcribed meeting, or a simple text-based “meeting feed”) while keeping the future vision of “joins the meeting and transcribes automatically.”

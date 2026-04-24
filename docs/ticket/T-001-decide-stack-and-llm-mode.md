@@ -4,18 +4,25 @@
 Lock down a buildable local MVP plan: tech stack + which “AI brain” we will use locally.
 
 ## Requirements / tasks
-- Choose one primary implementation path (recommended):
-  - **Option A (recommended): Python + Streamlit UI**
-  - Option B: Python + FastAPI API + simple web UI
-  - Option C: Node/TS + minimal UI
-- Choose LLM execution mode:
-  - **Local-first:** Ollama (e.g., `llama3.1`, `qwen2.5`) + local embeddings
-  - Hybrid: Ollama for summaries + local embeddings
-  - **Claude API mode:** Anthropic Claude for drift detection/classification (runs locally but requires `ANTHROPIC_API_KEY`)
-  - Optional: OpenAI API fallback (still runs locally but calls cloud)
-- Decide the “first integration” for ticket outputs:
-  - **Local export only (JSON/CSV/MD)** for MVP
-  - Optional: Jira REST API connector behind a feature flag
+- Lock decisions (this ticket records the chosen direction):
+  - **Frontend:** TypeScript + React via **Next.js** (local web UI)
+  - **Backend:** **Go** API (this repo’s `api/` module)
+  - **Realtime:** frontend ↔ backend via **WebSockets** to support multi-device simultaneous input
+  - **LLM:** **Anthropic Claude Sonnet 4.6** (API key not ready yet)
+    - Until `ANTHROPIC_API_KEY` is available, MVP must still run using a deterministic fallback (heuristics/stub/offline baseline).
+  - **Ticket creation integration:** **Motion API** (we will be provided a Motion API key)
+    - Local export remains available as a fallback.
+
+## Decision (locked)
+- Stack: **Next.js (React/TypeScript) + Go backend**
+- LLM mode: **Sonnet 4.6 via Anthropic API when available**, otherwise fallback/no-key mode
+- Ticket output: **Create in Motion (when configured)** + local export
+
+## Repo structure outline
+- `api/` — Go backend (REST + WebSocket)
+- `web/` — Next.js frontend
+- `docs/` — product + ticket specs
+- `build/` — Docker/build assets (optional)
 
 ## Acceptance criteria
 - A short written decision in this ticket file:
@@ -26,4 +33,4 @@ Lock down a buildable local MVP plan: tech stack + which “AI brain” we will 
 
 ## Notes
 - Keeping LLM provider pluggable reduces lock-in.
-- Streamlit is usually the fastest demo for hackathon-style MVP.
+- Realtime collaborative input does **not** require full OT/CRDT for MVP; an append-only shared “meeting feed” over WebSockets is acceptable.

@@ -12,6 +12,11 @@ Make the MVP demo repeatable.
   - what to say
   - expected outputs (screenshots optional)
 
+Demo should include a realtime check:
+- open the app on two devices (or two browser windows)
+- type into the shared transcript textbox in one client
+- verify the other client updates via WebSocket
+
 ## Acceptance criteria
 - Anyone can reproduce the demo in <5 minutes locally.
 

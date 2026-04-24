@@ -7,19 +7,19 @@ A local-running prototype that lets a user:
 1) provide an **agenda** and a **meeting transcript** (text),
 2) compute **agenda drift signals** and show nudges/flags,
 3) generate **summary + decisions + action items**,
-4) convert action items into **draft tickets** (local export; optional Jira connector).
+4) convert action items into **draft tickets** (local export; optional Motion connector).
 
 ### Explicit non-goals
 - No CI/CD pipeline.
 - No cloud hosting requirements (the app runs locally).
 - No real-time multi-speaker audio segmentation.
 
-> Note: some MVP modes may call an external LLM API (e.g., Claude) for drift detection. That still runs **locally** (no hosting), but requires an API key.
+> Note: some MVP modes may call an external LLM API (Sonnet 4.6 via Anthropic). That still runs **locally** (no hosting), but requires an API key.
 
 ## Recommended MVP architecture (can be revised in T-001)
-- **UI:** Streamlit (fast local demo) *or* minimal web UI.
-- **Core logic:** Python module for parsing/segmenting transcript, drift scoring, extraction.
-- **LLM provider:** pluggable (local Ollama or Claude/OpenAI API, depending on mode).
+- **UI:** Next.js (React + TypeScript) web app (`web/`).
+- **Backend:** Go API (`api/`) providing REST endpoints + a WebSocket for realtime input.
+- **LLM provider:** pluggable; primary target is Sonnet 4.6 (Anthropic) with a no-key fallback mode.
 
 ## Ticket conventions
 - IDs: `T-###`
@@ -41,7 +41,7 @@ A local-running prototype that lets a user:
 | T-007 | Meeting summary generation | T-004 |
 | T-008 | Decisions + action items extraction | T-004 |
 | T-009 | Ticket draft model + local export (JSON/CSV/MD) | T-008 |
-| T-010 | Optional: Jira connector (create draft tickets) | T-009 |
+| T-010 | Optional: Motion connector (create tasks from drafts) | T-009 |
 | T-011 | Local UI: upload transcript + show results | T-002, T-003, T-005, T-008, T-009 |
 | T-012 | Sample data + demo script | T-011 |
 | T-013 | Minimal tests for core logic | T-004, T-005, T-008 |

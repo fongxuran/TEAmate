@@ -4,22 +4,25 @@
 Create a runnable local project skeleton with repeatable dev commands.
 
 ## Requirements / tasks
-- Initialize the project structure (example for Python + Streamlit):
-  - `app/` (UI)
-  - `teammate/` (core library)
-  - `tests/`
-  - `docs/` (already exists)
-- Add dependency management:
-  - `pyproject.toml` using **uv** or **poetry**
-- Add local dev commands (e.g., `make dev`, or documented `uv run ...`).
-- Add `.env.example` for configuration:
-  - `LLM_PROVIDER=ollama|claude|openai`
-  - `OLLAMA_HOST=http://localhost:11434`
-  - optional `ANTHROPIC_API_KEY=...`
-  - optional `ANTHROPIC_MODEL=...`
-  - optional `OPENAI_API_KEY=...`
+- Confirm / finalize the monorepo structure:
+  - `api/` (Go backend; already present)
+  - `web/` (Next.js frontend; to be added)
+  - `docs/` (specs)
+  - `build/` (Docker/build assets; optional)
+- Add dependency management / tooling:
+  - Go: `go mod tidy`, `go test ./...`, `go fmt ./...`
+  - Web: `npm`/`pnpm` standard Next.js scripts (`dev`, `build`, `test`)
+- Add local dev commands (Makefile or documented commands):
+  - run API server
+  - run Next.js dev server
+  - run unit tests (API + web)
+- Ensure `.env.example` covers configuration for:
+  - Anthropic (Sonnet 4.6): `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`
+  - Motion: `MOTION_API_KEY` (and any required workspace IDs)
+  - Web ↔ API wiring: `NEXT_PUBLIC_API_BASE_URL`, `NEXT_PUBLIC_WS_URL`
 - Add basic formatting/linting (optional but helpful):
-  - `ruff` + `black` (or just `ruff format`)
+  - Go: `gofmt` (and optionally `golangci-lint`)
+  - Web: `eslint` + `prettier`
 
 ## Acceptance criteria
 - New developer can run the app locally following README steps.

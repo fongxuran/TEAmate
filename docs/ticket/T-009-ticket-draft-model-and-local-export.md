@@ -17,5 +17,8 @@ Convert extracted action items into ticket drafts and export locally.
 - Export generates files under a local output directory (e.g., `out/`).
 - Export contains all extracted action items as drafts.
 
+## Notes
+- Drafts should be shaped so they can be mapped cleanly into Motion tasks (T-010) when `MOTION_API_KEY` is configured.
+
 ## Dependencies
 - T-008

@@ -20,7 +20,7 @@ Prove that TEAmate can take a meeting transcript-like stream and reliably:
 ### Inputs
 Choose one (or support both):
 - **Transcript file upload** (simplest, reliable)
-- **Text-based live feed** (participants type; or a speech-to-text system outside TEAmate supplies text)
+- **Text-based live feed** (participants type via a shared textbox; multi-device via WebSockets)
 
 ### MVP features
 1) **Agenda + topic tracking**
@@ -45,7 +45,7 @@ Choose one (or support both):
 5) **Ticket drafting/creation**
    - Default mode: draft + approve.
    - Optional mode: auto-create.
-   - Integration target: start with **one** tool (e.g., Jira) or write to local JSON/CSV.
+   - Integration target: start with **one** tool (**Motion**) or write to local JSON/CSV.
 
 ### Non-goals (MVP)
 - Real-time multi-speaker voice segmentation and low-latency “interrupt” enforcement.
@@ -59,7 +59,7 @@ Choose one (or support both):
 - Start-of-meeting recap generated from prior meeting outcomes.
 
 ### 2) More integrations
-- Jira + others (Monday.com, Motion)
+- Motion + others (Jira, Monday.com)
 - Chat integration (e.g., Telegram) for nudges, recaps, and action-item follow-ups
 - MCP-based connectors to simplify adding tools
 

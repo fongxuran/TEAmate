@@ -11,8 +11,8 @@ Generate a readable meeting summary from segments.
   - action items (links to T-008 output)
   - open questions / risks
 - Implement summarization strategy:
-  - LLM prompt using chunked context
-  - fallback heuristic summary if LLM unavailable
+  - LLM prompt using chunked context (Sonnet 4.6 when available)
+  - fallback heuristic summary if LLM unavailable / API key missing
 - Ensure the summary references agenda items when possible.
 
 ## Acceptance criteria

@@ -14,7 +14,7 @@ Compute a drift score per segment relative to the agenda.
     - `label` in {`on_track`, `maybe_drift`, `drift`}
     - `rationale` (short, for explainability)
     - `confidence` (0-1)
-  - **Claude mode requires** `ANTHROPIC_API_KEY`.
+  - **Sonnet 4.6 mode requires** `ANTHROPIC_API_KEY`.
 - Fallback (offline mode): embedding similarity baseline
   - Create embeddings for agenda items + each segment
   - Compute similarity and assign:
@@ -24,13 +24,13 @@ Compute a drift score per segment relative to the agenda.
 - Provide thresholds:
   - `on_track`, `maybe_drift`, `drift`
 - Keep everything runnable locally:
-  - Claude mode: local app + external API call
-  - Offline mode: local embedding model (e.g., `sentence-transformers`) or Ollama embeddings if available
+  - Sonnet 4.6 mode: local app + external API call
+  - No-key mode: deterministic baseline (e.g., embedding similarity) so the MVP still works while keys are pending
 
 ## Acceptance criteria
 - For a sample transcript + agenda, the system outputs drift labels per segment.
 - Drift scoring supports:
-  - Claude mode (requires API key)
+  - Sonnet 4.6 mode (requires API key)
   - Offline mode (no network dependency)
 
 ## Dependencies

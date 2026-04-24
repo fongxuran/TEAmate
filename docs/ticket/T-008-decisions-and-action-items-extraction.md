@@ -16,7 +16,7 @@ Extract structured outcomes that can be converted into work.
   - `source_segment_ids`
   - `confidence`
 - Implement extraction:
-  - LLM-based extraction per chunk + merge/dedupe
+  - LLM-based extraction per chunk + merge/dedupe (Sonnet 4.6 when available)
   - basic dedupe (same title / high similarity)
 
 ## Acceptance criteria

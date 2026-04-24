@@ -13,10 +13,16 @@ Define the canonical input formats so all downstream logic is deterministic.
 - Define `Transcript`:
   - meeting id/name
   - list of turns
+- Define a realtime input event (for the multi-device textbox MVP):
+  - `RealtimeMessage`:
+    - `client_id`
+    - `timestamp`
+    - `text_delta` (append-only for MVP) or `text` (full snapshot)
+    - optional `author` (display name)
 - Decide what MVP accepts:
-  - Plain text transcript (like the docs) + best-effort parsing
-  - Or JSON upload (more structured)
-  - Recommended: support both (plain text for ease, JSON for repeatability)
+  - **Realtime textbox stream** (primary): clients send messages over WebSocket; backend builds a canonical transcript
+  - Plain text transcript (paste/upload) as fallback
+  - JSON upload (structured; repeatable) as a stretch
 - Document the schema + 1 example file.
 
 ## Acceptance criteria
