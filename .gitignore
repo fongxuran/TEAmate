@@ -1,0 +1,60 @@
+# OS:-
+.DS_Store
+
+# Editors:-
+.idea
+
+.netrc
+
+# Go specific:-
+*.out
+gqlgenerated.go
+api/internal/handler/gql/**/*_gen.go
+api/binaries
+api/**/mock_*.go
+
+# Web
+web/node_modules
+admin/node_modules
+/node_modules/
+
+# Dist
+admin/dist/
+web/dist/
+
+# dependencies
+web/.pnp
+admin/.pnp
+.pnp.js
+
+# testing
+web/coverage
+admin/coverage
+
+# build artefacts
+web/static
+web/reports
+admin/static
+admin/reports
+
+# production
+web/build
+admin/build
+admin/build-qa
+web/build-qa
+admin/build-prod
+web/build-prod
+
+# misc
+web/.DS_Store
+web/.env
+admin/.DS_Store
+admin/.env
+
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+
+admin/npm-debug.log*
+admin/yarn-debug.log*
+admin/yarn-error.log*
