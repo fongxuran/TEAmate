@@ -9,6 +9,9 @@
 # Secrets / local env
 .env
 
+# Local runtime state
+data/feedback/
+
 # Go specific:-
 *.out
 gqlgenerated.go
@@ -64,5 +67,3 @@ web/yarn-error.log*
 admin/npm-debug.log*
 admin/yarn-debug.log*
 admin/yarn-error.log*
-
-docs
