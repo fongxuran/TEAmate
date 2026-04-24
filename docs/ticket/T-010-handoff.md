@@ -118,13 +118,11 @@ Frontend:
 - `web/.npmrc`
 
 Docs:
-- `docs/ticket/T-010-optional-jira-connector.md` (updated to Notion)
+- `docs/ticket/T-010-optional-notion-connector.md` (updated to Notion)
 - `docs/ticket/T-009-ticket-draft-model-and-local-export.md`
 - `docs/ticket/T-011-local-ui-upload-and-results.md`
 - `.env.example`
 
 ## Follow-ups / nice-to-haves
-- Rename the ticket file to match reality (it still has `jira` in the filename):
-  - `docs/ticket/T-010-optional-jira-connector.md` → `docs/ticket/T-010-optional-notion-connector.md`
 - Extend `TicketDraft` → Notion mapping to support real database properties (Status, Priority, Assignee) once we decide a canonical database schema.
 - Wire “Create in Notion” to the *real* exported drafts UI (T-011) instead of the demo payload.
