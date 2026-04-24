@@ -67,3 +67,5 @@ web/yarn-error.log*
 admin/npm-debug.log*
 admin/yarn-debug.log*
 admin/yarn-error.log*
+
+docs
