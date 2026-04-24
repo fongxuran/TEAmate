@@ -33,7 +33,7 @@ type Session struct {
 func newSession(id string) *Session {
 	return &Session{
 		id:                id,
-		config:            analysis.Config{},
+		config:            analysis.DefaultConfig(),
 		feedbackOverrides: make(map[string]bool),
 		lastSegmentIDs:    make(map[string]struct{}),
 		alertedSegmentIDs: make(map[string]struct{}),

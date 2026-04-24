@@ -68,6 +68,7 @@ type AnalysisResult = {
 };
 
 type Config = {
+  provider: string;
   drift_threshold: number;
   segment_max_tokens: number;
   segment_max_chars: number;
@@ -114,9 +115,51 @@ type ExportResponse = {
   csv: string;
 };
 
+type ErrorWithMessage = {
+  message: string;
+};
+
+type UploadedAgendaItem = {
+  title?: string | null;
+};
+
+type UploadedTranscriptTurn = {
+  speaker?: string | null;
+  text?: string | null;
+};
+
+type UploadedTranscript = {
+  turns?: UploadedTranscriptTurn[];
+};
+
+type UploadedMeeting = {
+  schema_version?: string;
+  agenda?: UploadedAgendaItem[];
+  transcript?: UploadedTranscript;
+};
+
+function isErrorWithMessage(value: unknown): value is ErrorWithMessage {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'message' in value &&
+    typeof (value as { message?: unknown }).message === 'string'
+  );
+}
+
+function isUploadedMeeting(value: unknown): value is UploadedMeeting {
+  if (!value || typeof value !== 'object') return false;
+  const record = value as Record<string, unknown>;
+  if (record.schema_version !== 'v1') return false;
+  const transcript = record.transcript;
+  if (!transcript || typeof transcript !== 'object') return false;
+  const turns = (transcript as Record<string, unknown>).turns;
+  return Array.isArray(turns);
+}
+
 function formatError(e: unknown): string {
   if (typeof e === 'string') return e;
-  if (e && typeof e === 'object' && 'message' in e) return String((e as any).message);
+  if (isErrorWithMessage(e)) return e.message;
   return 'Unknown error';
 }
 
@@ -142,7 +185,7 @@ export default function MeetingMvp() {
 
   const [agendaText, setAgendaText] = useState('');
   const [transcriptText, setTranscriptText] = useState('');
-  const [config, setConfig] = useState<Config>({ drift_threshold: 0.08, segment_max_tokens: 220, segment_max_chars: 1800 });
+  const [config, setConfig] = useState<Config>({ provider: 'deterministic', drift_threshold: 0.08, segment_max_tokens: 220, segment_max_chars: 1800 });
 
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [driftAlert, setDriftAlert] = useState<DriftAlert | null>(null);
@@ -208,7 +251,7 @@ export default function MeetingMvp() {
         if (parsed.type === 'sync' || parsed.type === 'agenda_updated' || parsed.type === 'reset_applied') {
           setAgendaText(parsed.payload.agenda_text || '');
           setTranscriptText(parsed.payload.transcript_text || '');
-          setConfig(parsed.payload.config || config);
+          setConfig((prev) => ({ ...prev, ...(parsed.payload.config || {}) }));
           setAnalysis(parsed.payload.analysis || null);
           return;
         }
@@ -375,16 +418,21 @@ export default function MeetingMvp() {
       try {
         const raw = await file.text();
         if (file.name.toLowerCase().endsWith('.json')) {
-          const parsed = JSON.parse(raw) as any;
-          if (parsed && parsed.schema_version === 'v1' && parsed.transcript?.turns) {
-            const agendaLines = Array.isArray(parsed.agenda) ? parsed.agenda.map((a: any) => a?.title).filter(Boolean) : [];
+          const parsed = JSON.parse(raw) as unknown;
+          if (isUploadedMeeting(parsed)) {
+            const agendaLines = Array.isArray(parsed.agenda)
+              ? parsed.agenda
+                  .map((item) => (typeof item?.title === 'string' ? item.title : ''))
+                  .filter((title) => title.trim().length > 0)
+              : [];
             if (agendaLines.length > 0) {
               setAgendaTextAndBroadcast(agendaLines.join('\n'));
             }
-            const lines = (parsed.transcript.turns as any[])
-              .map((t) => {
-                const spk = typeof t?.speaker === 'string' && t.speaker.trim() ? `${t.speaker.trim()}: ` : '';
-                const txt = typeof t?.text === 'string' ? t.text.trim() : '';
+            const turns = parsed.transcript?.turns ?? [];
+            const lines = turns
+              .map((turn) => {
+                const spk = typeof turn?.speaker === 'string' && turn.speaker.trim() ? `${turn.speaker.trim()}: ` : '';
+                const txt = typeof turn?.text === 'string' ? turn.text.trim() : '';
                 return spk + txt;
               })
               .filter((l) => l.trim().length > 0);
@@ -538,6 +586,13 @@ export default function MeetingMvp() {
         </label>
 
         <div className="row">
+          <label style={{ flex: 1 }}>
+            <small>Provider</small>
+            <select value={config.provider} onChange={(e) => setConfigAndBroadcast({ ...config, provider: e.target.value })}>
+              <option value="deterministic">Deterministic (local)</option>
+              <option value="anthropic">Anthropic (placeholder)</option>
+            </select>
+          </label>
           <label style={{ flex: 1 }}>
             <small>Drift threshold</small>
             <input

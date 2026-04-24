@@ -14,6 +14,8 @@ import (
 
 // Config controls deterministic MVP scoring behavior.
 type Config struct {
+	// Provider is the scoring backend to use for drift detection.
+	Provider string `json:"provider"`
 	// DriftThreshold marks a segment as drift when bestScore < DriftThreshold.
 	DriftThreshold float64 `json:"drift_threshold"`
 	// SegmentMaxTokens is passed to model.SegmentTranscript.
@@ -22,15 +24,29 @@ type Config struct {
 	SegmentMaxChars int `json:"segment_max_chars"`
 }
 
+// DefaultConfig returns the default deterministic MVP config.
+func DefaultConfig() Config {
+	return Config{
+		Provider:         "deterministic",
+		DriftThreshold:   0.08,
+		SegmentMaxTokens: 220,
+		SegmentMaxChars:  1800,
+	}
+}
+
 func (c Config) withDefaults() Config {
+	def := DefaultConfig()
+	if c.Provider == "" {
+		c.Provider = def.Provider
+	}
 	if c.DriftThreshold <= 0 {
-		c.DriftThreshold = 0.08
+		c.DriftThreshold = def.DriftThreshold
 	}
 	if c.SegmentMaxTokens <= 0 {
-		c.SegmentMaxTokens = 220
+		c.SegmentMaxTokens = def.SegmentMaxTokens
 	}
 	if c.SegmentMaxChars <= 0 {
-		c.SegmentMaxChars = 1800
+		c.SegmentMaxChars = def.SegmentMaxChars
 	}
 	return c
 }

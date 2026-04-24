@@ -19,9 +19,22 @@ type ErrorResponse = {
   error: string;
 };
 
+type ErrorWithMessage = {
+  message: string;
+};
+
+function isErrorWithMessage(value: unknown): value is ErrorWithMessage {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'message' in value &&
+    typeof (value as { message?: unknown }).message === 'string'
+  );
+}
+
 function formatError(e: unknown): string {
   if (typeof e === 'string') return e;
-  if (e && typeof e === 'object' && 'message' in e) return String((e as any).message);
+  if (isErrorWithMessage(e)) return e.message;
   return 'Unknown error';
 }
 
